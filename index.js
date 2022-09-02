@@ -1,17 +1,14 @@
 const express = require('express');
+require('dotenv').config();
 
 // CREA EL SERVIDOR DE EXPRESS
 const app = express();
 
-// RUTAS
-app.get('/', (req, res) => {
-    res.json({
-        ok: true
-    })
-})
+// DIRECTORIO PUBLICO
+app.use(express.static('public'));
 
 // ESCUCHAR
-app.listen(3000, () => {
-    console.log(`Server running on port ${ 4000 }`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${ process.env.PORT }`);
 });
 
