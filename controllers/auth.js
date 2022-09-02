@@ -1,17 +1,11 @@
 const { response } = require('express');
+const { validationResult } = require('express-validator');
 
 const createUser = (req, res = response) => {
 
     const { name, email, password } = req.body;
 
-    if (name.length < 5) {
-        return res.status(400).json({
-            ok: false,
-            msg: 'El nombre debe tener 5 letras o mas'
-        })
-    }
-
-    res.json({
+    res.status(201).json({
         ok: true,
         msg: 'register',
         name,
@@ -24,19 +18,19 @@ const loginUser = (req, res = response) => {
 
     const { email, password } = req.body;
 
-    res.json({
+    res.status(201).json({
         ok: true,
         msg: 'login',
         email,
         password
-    })
+    });
 }
 
 const renewToken = (req, res = response) => {
     res.json({
         ok: true,
         msg: 'renew'
-    })
+    });
 }
 
 module.exports = {
